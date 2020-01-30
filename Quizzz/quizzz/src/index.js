@@ -12,6 +12,8 @@ class Quizzz extends Component {
         score: 0,
         responses: 0
     };
+
+    {/*function to get random questions from quizservice api */}
     getQuestions = () => {
         quizService().then(question => {
             this.setState({
@@ -20,6 +22,8 @@ class Quizzz extends Component {
         });
 
     };
+
+    {/*function to to compute score when clicked on right answer */}
     computeAnswer = (answer, correctAnswer) => {
         if (answer === correctAnswer) {
             this.setState({
@@ -30,6 +34,8 @@ class Quizzz extends Component {
             responses: this.state.responses < 5 ? this.state.responses + 1 : 5
         }) 
      };
+
+    {/*function to play game gain when clicked on play again button */}
     playAgain  = () => {
         this.getQuestions();
         this.setState({
@@ -37,6 +43,7 @@ class Quizzz extends Component {
             responses: 0
         })
     } 
+    
     componentDidMount(){
         this.getQuestions();
     }
